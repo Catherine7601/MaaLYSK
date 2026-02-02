@@ -136,6 +136,11 @@
 			"description": "领取每周礼包,快乐小铺的极空许愿券和辉曜磁石"
 		},
 		{
+			"name": "💰年卡领取",
+			"entry": "进入年卡领取",
+			"default_check": false
+		},
+		{
 			"name": "📷周常拍大头贴",
 			"entry": "进入大头贴拍照",
 			"default_check": false,
