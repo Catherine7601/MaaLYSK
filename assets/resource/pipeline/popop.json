@@ -39,19 +39,6 @@
 		},
 		"next": ["返回等待"]
 	},
-	"退出无脑点popop": {
-		"recognition": {
-			"type": "DirectHit",
-			"param": {}
-		},
-		"action": {
-			"type": "Click",
-			"param": {
-				"target": [112, 1140, 3, 3]
-			}
-		},
-		"next": []
-	},
 	"退出喵喵牌确定popop": {
 		"recognition": {
 			"type": "OCR",
@@ -78,7 +65,8 @@
 			"type": "Click",
 			"param": {}
 		},
-		"focus": "退出剧情回顾"
+		"focus": "退出剧情回顾",
+		"next": ["返回等待"]
 	},
 	"退出获取奖励popop": {
 		"recognition": {
@@ -146,7 +134,9 @@
 		},
 		"action": {
 			"type": "Click",
-			"param": {"target": [19, 936, 12, 13]}
+			"param": {
+				"target": [19, 936, 12, 13]
+			}
 		},
 		"timeout": 3000,
 		"next": ["退出点击空白继续1popop"]
@@ -169,7 +159,9 @@
 		},
 		"action": {
 			"type": "Click",
-			"param": {"target": [112, 1140, 3, 3]}
+			"param": {
+				"target": [112, 1140, 3, 3]
+			}
 		},
 		"next": []
 	},
@@ -182,20 +174,29 @@
 			}
 		},
 		"action": {
-			"type": "DoNothing",
-			"param": {}
+			"type": "Click",
+			"param": {
+				"target": [19, 936, 12, 13]
+			}
 		},
+		"repeat": 5,
+		"repeat_delay": 200,
 		"focus": "体力已耗尽",
-		"next": ["退出领取点击popop"]
+		"next": []
 	},
 	"网络连接失败popop": {
 		"recognition": {
 			"type": "OCR",
-			"param": {"expected": ["网络"], "roi": [138, 516, 50, 29]}
+			"param": {
+				"expected": ["网络"],
+				"roi": [138, 516, 50, 29]
+			}
 		},
 		"action": {
 			"type": "Click",
-			"param": {"target": [456, 667, 42, 20]}
+			"param": {
+				"target": [456, 667, 42, 20]
+			}
 		},
 		"focus": "网络连接失败,尝试点击关闭弹窗"
 	},
@@ -212,5 +213,21 @@
 			"param": {}
 		},
 		"focus": "断线重连失败,尝试再次重连"
+	},
+	"账号在别处登录popop": {
+		"recognition": {
+			"type": "OCR",
+			"param": {
+				"expected": ["账号已在别处登录", "账号已在别处"],
+				"roi": [175, 497, 371, 100]
+			}
+		},
+		"action": {
+			"type": "Click",
+			"param": {
+				"target": [353, 661, 17, 8]
+			}
+		},
+		"next": ["点击账号登录", "[JumpBack]切换账号公告确认"]
 	}
 }

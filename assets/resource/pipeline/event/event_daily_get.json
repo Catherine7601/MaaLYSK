@@ -292,7 +292,7 @@
 			"type": "Click",
 			"param": {"target_offset": [21, -59, -55, 7]}
 		},
-		"next": ["剪影裁诗确认", "[JumpBack]退出无脑点popop"]
+		"next": ["剪影裁诗确认", "[JumpBack]退出点击1popop"]
 	},
 	"剪影裁诗确认": {
 		"recognition": {
