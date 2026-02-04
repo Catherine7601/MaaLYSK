@@ -40,7 +40,9 @@
 
 ## 下载方式
 
-下载地址：[Releases](https://github.com/Witty36/MaaLYSK/releases)
+Github下载地址：[Releases](https://github.com/Witty36/MaaLYSK/releases)
+Mirror酱下载：[Mirror酱-MaaLYSK](https://mirrorchyan.com/zh/projects?source=maaydoc&rid=MaaLYSK)
+加入QQ群，获取安装包：1065676561
 
 ## 使用说明
 
@@ -62,6 +64,7 @@
 ## 加入我们
 
 - MaaLYSK 交流 QQ 群：1065676561（有意参与开发请联系群主）
+- MaaLYSK 开发 QQ 群：1071536530
 - MaaFramework 开发交流 QQ 群: 595990173
 
 ## 鸣谢
