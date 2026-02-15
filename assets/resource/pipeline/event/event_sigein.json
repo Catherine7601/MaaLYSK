@@ -42,6 +42,6 @@
 			"type": "Click",
 			"param": {}
 		},
-		"next": ["stop"]
+		"next": ["退出点击1popop"]
 	}
 }
