@@ -177,6 +177,124 @@
 		"max_hit": 1,
 		"post_delay": 2000
 	},
+	"识别金体力瓶_长按": {
+		"recognition": {
+			"type": "And",
+			"param": {
+				"all_of": [
+					{
+						"sub_name": "金体力瓶",
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": "fight/金体力瓶.png",
+								"roi": [105, 460, 420, 194]
+							}
+						}
+					},
+					{
+						"recognition": {
+							"type": "ColorMatch",
+							"param": {
+								"upper": [246, 230, 233],
+								"lower": [241, 150, 146],
+								"roi": "金体力瓶",
+								"roi_offset": [-37, 63, 75, -7],
+								"count": 700
+							}
+						}
+					}
+				],
+				"box_index": 0
+			}
+		},
+		"action": {
+			"type": "LongPress",
+			"param": {
+				"duration": 1500
+			}
+		},
+		"max_hit": 1,
+		"post_delay": 2000
+	},
+	"识别深紫体力瓶_长按": {
+		"recognition": {
+			"type": "And",
+			"param": {
+				"all_of": [
+					{
+						"sub_name": "深紫体力瓶",
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": "fight/深紫体力瓶.png",
+								"roi": [105, 460, 420, 194]
+							}
+						}
+					},
+					{
+						"recognition": {
+							"type": "ColorMatch",
+							"param": {
+								"upper": [246, 230, 233],
+								"lower": [241, 150, 146],
+								"roi": "深紫体力瓶",
+								"roi_offset": [-37, 63, 75, -7],
+								"count": 700
+							}
+						}
+					}
+				]
+			}
+		},
+		"action": {
+			"type": "LongPress",
+			"param": {
+				"duration": 1500
+			}
+		},
+		"max_hit": 1,
+		"post_delay": 2000
+	},
+	"识别浅紫体力瓶_长按": {
+		"recognition": {
+			"type": "And",
+			"param": {
+				"all_of": [
+					{
+						"sub_name": "浅紫体力瓶",
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": "fight/浅紫体力瓶.png",
+								"roi": [108, 480, 506, 144]
+							}
+						}
+					},
+					{
+						"recognition": {
+							"type": "ColorMatch",
+							"param": {
+								"upper": [246, 230, 233],
+								"lower": [241, 150, 146],
+								"roi": "浅紫体力瓶",
+								"roi_offset": [-37, 63, 75, -7],
+								"count": 700
+							}
+						}
+					}
+				]
+			}
+		},
+		"action": {
+			"type": "LongPress",
+			"param": {
+				"duration": 1500
+			}
+		},
+		"max_hit": 1,
+		"post_delay": 2000
+	},
 	"识别金体力瓶_无限时": {
 		"recognition": {
 			"type": "TemplateMatch",
