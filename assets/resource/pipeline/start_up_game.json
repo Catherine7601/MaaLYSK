@@ -14,7 +14,8 @@
 			"[JumpBack]网络连接失败popop",
 			"[JumpBack]断线重连popop",
 			"[JumpBack]sub_进入游戏",
-			"[JumpBack]sub_启动深空官服"
+			"[JumpBack]sub_启动深空官服",
+			"[JumpBack]启动再等等"
 		],
 		"focus": "启动恋与深空官服"
 	},
@@ -55,7 +56,7 @@
 		"recognition": {
 			"type": "TemplateMatch",
 			"param": {
-				"template": ["login/账号登录.png"],
+				"template": ["login/账号登录.png", "login/账号登录1.png"],
 				"roi": [242, 715, 227, 83]
 			}
 		},
