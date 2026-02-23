@@ -158,9 +158,9 @@
 				"target": [662, 1038, 7, 6]
 			}
 		},
-		"next": ["确认在牵绊页面"]
+		"next": ["牵绊页面确认"]
 	},
-	"确认在牵绊页面": {
+	"牵绊页面确认": {
 		"recognition": {
 			"type": "TemplateMatch",
 			"param": {
@@ -198,7 +198,7 @@
 		},
 		"next": []
 	},
-	"进入手机": {
+	"点击手机": {
 		"pre_delay": 1000,
 		"recognition": {
 			"type": "TemplateMatch",
@@ -212,10 +212,9 @@
 			"param": {"target": [53, 1060, 8, 17]}
 		},
 		"post_delay": 2000,
-		"timeout": 2000,
 		"next": []
 	},
-	"进入手机（绿码）": {
+	"点击手机（绿码）": {
 		"pre_delay": 1000,
 		"recognition": {
 			"type": "TemplateMatch",
@@ -232,7 +231,104 @@
 			}
 		},
 		"post_delay": 2000,
-		"timeout": 2000,
 		"next": []
+	},
+	"进入手机电话": {
+		"recognition": {
+			"type": "TemplateMatch",
+			"param": {
+				"template": ["phone/手机电话.png"],
+				"roi": [547, 1007, 64, 75],
+				"green_mask": true
+			}
+		},
+		"action": {
+			"type": "Click",
+			"param": {"target": [569, 1039, 10, 13]}
+		},
+		"post_delay": 1500,
+		"next": ["电话页面确认"]
+	},
+	"电话页面确认": {
+		"recognition": {
+			"type": "OCR",
+			"param": {
+				"roi": [144, 110, 186, 81],
+				"expected": ["语音", "语", "音"]
+			}
+		}
+	},
+	"进入手机朋友圈": {
+		"recognition": {
+			"type": "TemplateMatch",
+			"param": {
+				"template": ["phone/手机朋友圈.png"],
+				"roi": [447, 1069, 109, 89],
+				"green_mask": true
+			}
+		},
+		"action": {
+			"type": "Click",
+			"param": {"target": [500, 1111, 5, 5]}
+		},
+		"post_delay": 1500,
+		"next": ["朋友圈页面确认"]
+	},
+	"朋友圈页面确认": {
+		"recognition": {
+			"type": "Or",
+			"param": {
+				"any_of": [
+					{
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": ["phone/朋友圈页面.png"],
+								"roi": [425, 32, 277, 202],
+								"threshold": 0.65
+							}
+						}
+					},
+					{
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": [
+									"phone/朋友圈页面1.png",
+									"phone/朋友圈页面2.png"
+								],
+								"roi": [550, 384, 107, 654],
+								"threshold": 0.65
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"进入手机信息": {
+		"recognition": {
+			"type": "TemplateMatch",
+			"param": {
+				"template": ["phone/手机信息.png"],
+				"roi": [631, 962, 73, 77],
+				"green_mask": true
+			}
+		},
+		"action": {
+			"type": "Click",
+			"param": {"target": [653, 989, 24, 18]}
+		},
+		"post_delay": 1500,
+		"next": ["信息页面确认"]
+	},
+	"信息页面确认": {
+		"recognition": {
+			"type": "OCR",
+			"param": {
+				"roi": [546, 36, 129, 87],
+				"expected": ["信息", "信", "息"]
+			}
+		}
 	}
 }

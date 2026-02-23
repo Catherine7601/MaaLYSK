@@ -1335,9 +1335,9 @@
 						"进入自动接电话": {
 							"next": [
 								"确认在电话页面",
-								"[JumpBack]选择手机电话",
-								"[JumpBack]进入手机",
-								"[JumpBack]进入手机（绿码）",
+								"[JumpBack]进入手机电话",
+								"[JumpBack]点击手机",
+								"[JumpBack]点击手机（绿码）",
 								"[JumpBack]导航回主页面"
 							]
 						},
@@ -1401,9 +1401,9 @@
 						"进入自动接电话": {
 							"next": [
 								"确认在视频页面",
-								"[JumpBack]选择手机电话",
-								"[JumpBack]进入手机",
-								"[JumpBack]进入手机（绿码）",
+								"[JumpBack]进入手机电话",
+								"[JumpBack]点击手机",
+								"[JumpBack]点击手机（绿码）",
 								"[JumpBack]导航回主页面"
 							]
 						},

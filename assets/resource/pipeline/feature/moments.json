@@ -10,35 +10,41 @@
 		},
 		"next": [
 			"确认在朋友圈页面",
-			"[JumpBack]选择手机朋友圈",
-			"[JumpBack]进入手机",
-			"[JumpBack]进入手机（绿码）",
+			"[JumpBack]进入手机朋友圈",
+			"[JumpBack]点击手机",
+			"[JumpBack]点击手机（绿码）",
 			"[JumpBack]导航回主页面"
 		]
 	},
-	"选择手机朋友圈": {
-		"recognition": {
-			"type": "TemplateMatch",
-			"param": {
-				"template": ["phone/手机朋友圈.png"],
-				"roi": [447, 1069, 109, 89],
-				"green_mask": true
-			}
-		},
-		"action": {
-			"type": "Click",
-			"param": {"target": [500, 1111, 5, 5]}
-		},
-		"post_delay": 1500,
-		"next": []
-	},
 	"确认在朋友圈页面": {
 		"recognition": {
-			"type": "TemplateMatch",
+			"type": "Or",
 			"param": {
-				"template": ["phone/朋友圈页面.png"],
-				"roi": [425, 32, 277, 202],
-				"threshold": 0.65
+				"any_of": [
+					{
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": ["phone/朋友圈页面.png"],
+								"roi": [425, 32, 277, 202],
+								"threshold": 0.65
+							}
+						}
+					},
+					{
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": [
+									"phone/朋友圈页面1.png",
+									"phone/朋友圈页面2.png"
+								],
+								"roi": [550, 384, 107, 654],
+								"threshold": 0.65
+							}
+						}
+					}
+				]
 			}
 		},
 		"action": {
@@ -143,7 +149,7 @@
 		},
 		"max_hit": 1,
 		"focus": {
-			"Node.Action.Succeeded": "开始打祁煜朋友圈"
+			"Node.Action.Succeeded": "开始回复祁煜朋友圈"
 		},
 		"timeout": 5000,
 		"next": [
@@ -168,7 +174,7 @@
 		},
 		"max_hit": 1,
 		"focus": {
-			"Node.Action.Succeeded": "开始打沈星回朋友圈"
+			"Node.Action.Succeeded": "开始回复沈星回朋友圈"
 		},
 		"timeout": 5000,
 		"next": [
@@ -193,7 +199,7 @@
 		},
 		"max_hit": 1,
 		"focus": {
-			"Node.Action.Succeeded": "开始打黎深朋友圈"
+			"Node.Action.Succeeded": "开始回复黎深朋友圈"
 		},
 		"timeout": 5000,
 		"next": [
@@ -218,7 +224,7 @@
 		},
 		"max_hit": 1,
 		"focus": {
-			"Node.Action.Succeeded": "开始打秦彻朋友圈"
+			"Node.Action.Succeeded": "开始回复秦彻朋友圈"
 		},
 		"timeout": 5000,
 		"next": [
@@ -243,7 +249,7 @@
 		},
 		"max_hit": 1,
 		"focus": {
-			"Node.Action.Succeeded": "开始打夏以昼朋友圈"
+			"Node.Action.Succeeded": "开始回复夏以昼朋友圈"
 		},
 		"timeout": 5000,
 		"next": [

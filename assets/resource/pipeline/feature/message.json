@@ -10,27 +10,11 @@
 		},
 		"next": [
 			"确认在信息页面",
-			"[JumpBack]选择手机信息",
-			"[JumpBack]进入手机",
-			"[JumpBack]进入手机（绿码）",
+			"[JumpBack]进入手机信息",
+			"[JumpBack]点击手机",
+			"[JumpBack]点击手机（绿码）",
 			"[JumpBack]导航回主页面"
 		]
-	},
-	"选择手机信息": {
-		"recognition": {
-			"type": "TemplateMatch",
-			"param": {
-				"template": ["phone/手机信息.png"],
-				"roi": [631, 962, 73, 77],
-				"green_mask": true
-			}
-		},
-		"action": {
-			"type": "Click",
-			"param": {"target": [653, 989, 24, 18]}
-		},
-		"post_delay": 1500,
-		"next": []
 	},
 	"确认在信息页面": {
 		"recognition": {
