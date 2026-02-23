@@ -4,7 +4,11 @@
 			"type": "OCR",
 			"param": {
 				"expected": ["自动", "自", "动"],
-				"roi": [473, 1203, 33, 18]
+				"replace": [
+					["白", "自"],
+					["百", "自"]
+				],
+				"roi": [453, 1182, 69, 56]
 			}
 		},
 		"action": {
@@ -12,7 +16,7 @@
 			"param": {}
 		},
 		"pre_delay": 2000,
-		"post_delay": 5000,
+		"post_delay": 4000,
 		"next": [
 			"点成2倍速",
 			"[JumpBack]选剧情选项",
@@ -29,8 +33,13 @@
 		},
 		"repeat": 3,
 		"repeat_delay": 1000,
-		"timeout": 10000,
-		"next": ["[JumpBack]选剧情选项", "[JumpBack]自动过剧情点点"]
+		"timeout": 15000,
+		"next": [
+			"[JumpBack]选剧情选项",
+			"[JumpBack]跳过吹气",
+			"[JumpBack]自动过剧情点点",
+			"[JumpBack]live剧情等待"
+		]
 	},
 	"自动过剧情点点": {
 		"recognition": {
@@ -49,6 +58,34 @@
 		"repeat": 5,
 		"repeat_delay": 200
 	},
+	"live剧情等待": {
+		"recognition": {
+			"type": "OCR",
+			"param": {
+				"expected": ["自动", "自", "动"],
+				"replace": [
+					["白", "自"],
+					["百", "自"]
+				],
+				"roi": [543, 1182, 70, 56]
+			}
+		},
+		"post_delay": 5000
+	},
+	"跳过吹气": {
+		"recognition": {
+			"type": "OCR",
+			"param": {
+				"expected": ["跳过", "跳过吹气", "跳"],
+				"roi": [38, 57, 647, 1095],
+				"threshold": 0.6
+			}
+		},
+		"action": {
+			"type": "Click",
+			"param": {}
+		}
+	},
 	"选剧情选项": {
 		"recognition": {
 			"type": "ColorMatch",
@@ -56,7 +93,7 @@
 				"lower": [94, 89, 117],
 				"upper": [114, 109, 137],
 				"roi": [242, 610, 274, 68],
-				"count": 1000
+				"count": 800
 			}
 		},
 		"action": {
