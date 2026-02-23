@@ -52,7 +52,7 @@
 			"Node.PipelineNode.Failed": "[color:red]无每周礼包可领取[/color]"
 		},
 		"next": ["商城每周礼包"],
-		"on_error": ["商城每周礼包点击"]
+		"on_error": ["周常_点击兑换"]
 	},
 	"商城每周礼包": {
 		"recognition": {
@@ -113,9 +113,9 @@
 				"target": [19, 936, 12, 13]
 			}
 		},
+		"repeat": 2,
 		"next": ["周常_点击兑换", "[JumpBack]退出点击（上限）popop"]
 	},
-
 	"周常_点击兑换": {
 		"recognition": {
 			"type": "OCR",
@@ -128,7 +128,12 @@
 			"type": "Click",
 			"param": {}
 		},
-		"next": ["进入快乐小铺", "[JumpBack]滑动寻找小铺"]
+		"timeout": 6000,
+		"next": [
+			"[JumpBack]进入快乐小铺",
+			"[JumpBack]进入心砂商店",
+			"[JumpBack]滑动寻找小铺"
+		]
 	},
 	"滑动寻找小铺": {
 		"recognition": {
@@ -144,6 +149,7 @@
 			}
 		},
 		"post_wait_freezes": 1000,
+		"max_hit": 10,
 		"next": []
 	},
 	"进入快乐小铺": {
@@ -158,6 +164,7 @@
 			"type": "Click",
 			"param": {}
 		},
+		"max_hit": 1,
 		"post_delay": 1000,
 		"next": ["确认进入快乐小铺"]
 	},
@@ -178,12 +185,7 @@
 			"Node.PipelineNode.Failed": "[color:red]快乐小铺没有可购买物品[/color]"
 		},
 		"timeout": 5000,
-		"next": ["小铺_极空许愿券", "小铺_辉耀磁石"],
-		"on_error": [
-			"进入心砂商店",
-			"[JumpBack]滑动寻找小铺",
-			"[JumpBack]退出点击（上限）popop"
-		]
+		"next": ["[JumpBack]小铺_极空许愿券", "[JumpBack]小铺_辉耀磁石"]
 	},
 	"小铺_极空许愿券": {
 		"recognition": {
@@ -197,6 +199,7 @@
 			"type": "Click",
 			"param": {}
 		},
+		"max_hit": 1,
 		"next": ["小铺极空许愿券领取"]
 	},
 	"小铺极空许愿券领取": {
@@ -213,22 +216,28 @@
 		},
 		"pre_delay": 500,
 		"post_delay": 1000,
-		"focus": "快乐小铺极空许愿券购买成功",
-		"next": ["小铺_辉耀磁石", "[JumpBack]退出点击（上限）popop"]
+		"focus": {
+			"Node.Action.Succeeded": "快乐小铺_极空许愿券购买成功"
+		},
+		"next": [
+			"是否商城页面",
+			"[JumpBack]退出获得奖励popop",
+			"[JumpBack]退出点击（上限）popop"
+		]
 	},
-
 	"小铺_辉耀磁石": {
 		"recognition": {
 			"type": "TemplateMatch",
 			"param": {
 				"template": ["shopping/weekly/辉耀磁石.png"],
-				"roi": [46, 376, 312, 176]
+				"roi": [51, 362, 595, 210]
 			}
 		},
 		"action": {
 			"type": "Click",
 			"param": {}
 		},
+		"max_hit": 1,
 		"next": ["购买两个"]
 	},
 	"购买两个": {
@@ -260,10 +269,12 @@
 		},
 		"pre_delay": 500,
 		"post_delay": 1000,
-		"focus": "快乐小铺辉耀磁石购买成功",
+		"focus": {
+			"Node.Action.Succeeded": "快乐小铺_辉耀磁石购买成功"
+		},
 		"next": [
-			"进入心砂商店",
-			"[JumpBack]滑动寻找小铺",
+			"是否商城页面",
+			"[JumpBack]退出获得奖励popop",
 			"[JumpBack]退出点击（上限）popop"
 		]
 	},
@@ -281,6 +292,7 @@
 		},
 		"post_delay": 1000,
 		"timeout": 5000,
+		"max_hit": 1,
 		"next": ["确认进入心砂商店"]
 	},
 	"确认进入心砂商店": {
@@ -300,7 +312,8 @@
 			"Node.PipelineNode.Failed": "[color:red]心砂商店没有可购买物品[/color]"
 		},
 		"timeout": 5000,
-		"next": ["[JumpBack]紫砂_极空许愿券", "[JumpBack]蓝砂_加速魔方"]
+		"next": ["[JumpBack]紫砂_极空许愿券", "[JumpBack]蓝砂_加速魔方"],
+		"on_error": ["stop"]
 	},
 	"紫砂_极空许愿券": {
 		"recognition": {
@@ -312,19 +325,45 @@
 		},
 		"action": {
 			"type": "Click",
-			"param": {"target": [545, 465, 18, 11]}
+			"param": {
+				"target": [545, 465, 18, 11]
+			}
 		},
 		"max_hit": 1,
 		"next": ["购买五个"]
 	},
 	"蓝砂_加速魔方": {
 		"recognition": {
-			"type": "TemplateMatch",
+			"type": "And",
 			"param": {
-				"template": ["shopping/weekly/蓝砂加速魔方购买.png"],
-				"roi": [168, 432, 503, 252]
+				"all_of": [
+					{
+						"sub_name": "稀有心砂",
+						"recognition": {
+							"type": "TemplateMatch",
+							"param": {
+								"template": [
+									"shopping/weekly/蓝砂加速魔方购买.png"
+								],
+								"roi": [168, 432, 503, 252]
+							}
+						}
+					},
+					{
+						"recognition": {
+							"type": "OCR",
+							"param": {
+								"expected": ["加速魔方", "加速", "魔方"],
+								"roi": "稀有心砂",
+								"roi_offset": [-145, -129, 189, 117]
+							}
+						}
+					}
+				],
+				"box_index": 0
 			}
 		},
+
 		"action": {
 			"type": "Click",
 			"param": {}
@@ -332,7 +371,6 @@
 		"max_hit": 1,
 		"next": ["购买十个"]
 	},
-
 	"购买五个": {
 		"recognition": {
 			"type": "TemplateMatch",
@@ -382,8 +420,14 @@
 			"param": {}
 		},
 		"post_delay": 1000,
-		"focus": "心砂_珍贵极空许愿券购买成功",
-		"next": ["是否商城页面", "[JumpBack]退出点击（上限）popop"]
+		"focus": {
+			"Node.Action.Succeeded": "珍贵心砂_极空许愿券购买成功"
+		},
+		"next": [
+			"是否商城页面",
+			"[JumpBack]退出获得奖励popop",
+			"[JumpBack]退出点击（上限）popop"
+		]
 	},
 	"蓝砂加速魔方点击购买": {
 		"recognition": {
@@ -398,7 +442,13 @@
 			"param": {}
 		},
 		"post_delay": 1000,
-		"focus": "心砂_稀有加速魔方购买成功",
-		"next": ["是否商城页面", "[JumpBack]退出点击（上限）popop"]
+		"focus": {
+			"Node.Action.Succeeded": "稀有心砂_加速魔方购买成功"
+		},
+		"next": [
+			"是否商城页面",
+			"[JumpBack]退出获得奖励popop",
+			"[JumpBack]退出点击（上限）popop"
+		]
 	}
 }
