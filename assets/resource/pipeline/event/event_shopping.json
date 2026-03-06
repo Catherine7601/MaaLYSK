@@ -50,7 +50,7 @@
 		"recognition": {
 			"type": "TemplateMatch",
 			"param": {
-				"template": ["event/shopping/邀春新酿.png"],
+				"template": ["shopping/event/邀春新酿.png"],
 				"roi": [589, 6, 123, 130]
 			}
 		},
@@ -68,7 +68,7 @@
 		"recognition": {
 			"type": "TemplateMatch",
 			"param": {
-				"template": ["event/shopping/物品购买.png"],
+				"template": ["shopping/event/物品购买.png"],
 				"roi": [189, 445, 132, 123]
 			}
 		},
